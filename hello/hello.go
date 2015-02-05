@@ -1,7 +1,9 @@
 package main
 
 import "fmt"
+import "github.com/chrestomanci/go-exercises/stringutil"
 
 func main() {
-    fmt.Println("Hello World (from go)")
+    suffix := "World";
+    fmt.Println(stringutil.Reverse("!oG ,olleH") + " " + suffix)
 }
