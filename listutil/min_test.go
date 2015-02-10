@@ -9,7 +9,7 @@ type case_ent struct {
 	want int
 }
 
-func TestXYZ(t *testing.T) {
+func Test_Min(t *testing.T) {
 	cases := []case_ent{
 		{[]int{0}, 0},
 		{[]int{3, 2, 1}, 1},
@@ -23,3 +23,19 @@ func TestXYZ(t *testing.T) {
 		}
 	}
 }
+
+func Test_Max(t *testing.T) {
+	cases := []case_ent{
+		{[]int{0}, 0},
+		{[]int{3, 2, 1}, 3},
+		{[]int{-5, 0, 1}, 1},
+	}
+
+	for _, c := range cases {
+		got := Max(c.in)
+		if got != c.want {
+			t.Errorf("Min(%v) == %d, want %d", c.in, got, c.want)
+		}
+	}
+}
+
