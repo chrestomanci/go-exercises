@@ -24,6 +24,21 @@ func Test_Min(t *testing.T) {
 	}
 }
 
+func Test_MinAegs(t *testing.T) {
+
+	if 0 != MinArgs(0) {
+		t.Errorf("MinArgs(%v) == %d, want %d", []int{0}, MinArgs(0), 0)
+	}
+
+	if 1 != MinArgs(3, 2, 1) {
+		t.Errorf("MinArgs(%v) == %d, want %d", []int{3, 2, 1}, MinArgs(3, 2, 1), 1)
+	}
+
+	if -5 != MinArgs(-5, 0, 1) {
+		t.Errorf("MinArgs(%v) == %d, want %d", []int{-5, 0, 1}, MinArgs(-5, 0, 1), -5)
+	}
+}
+
 func Test_Max(t *testing.T) {
 	cases := []case_ent{
 		{[]int{0}, 0},
@@ -38,4 +53,3 @@ func Test_Max(t *testing.T) {
 		}
 	}
 }
-
