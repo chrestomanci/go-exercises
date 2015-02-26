@@ -29,7 +29,7 @@ func fib_no_cache(x uint64) uint64 {
 		return 1
 
 	default:
-		return (fib(x-1) + fib(x-2))
+		return (fib_no_cache(x-1) + fib_no_cache(x-2))
 
 	}
 }
@@ -44,9 +44,16 @@ func main() {
 
 	setup()
 
-	for i := 1; i <= 80; i++ {
+	fmt.Println("With cache")
+	for i := 0; i <= 40; i++ {
 		arg := uint64(i)
-		fmt.Printf("Fibonacci %d is %d\n", i, fib(arg))
+		fmt.Printf("\tFibonacci %d is %d\n", i, fib(arg))
+	}
+
+	fmt.Println("Pure recursive version, Without cache")
+	for i := 0; i <= 40; i++ {
+		arg := uint64(i)
+		fmt.Printf("\tFibonacci %d is %d\n", i, fib_no_cache(arg))
 	}
 
 }
