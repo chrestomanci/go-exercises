@@ -4,18 +4,32 @@ import (
 	"fmt"
 )
 
-// TODO: Replace with a list
-var primes map[uint]bool
+// Setup an initial slice with a seed list
+var primes = []uint{
+	2,
+	3,
+	5,
+	7,
+	11,
+	13,
+	17,
+	19,
+}
 
 func test(num uint) bool {
 
-	for prime := range primes {
+	for _, prime := range primes {
 
 		if 2 == prime {
-			continue
+			continue // No need to test, caller will only send odd numbers.
 		}
 
-//		fmt.Printf("\t\tTesting %d with %d\n", num, prime)
+		if 0 == prime {
+			// ran out of entries in the slice
+			return true
+		}
+
+		// fmt.Printf("\t\tTesting %d with %d\n", num, prime)
 
 		if num == prime {
 			return true
@@ -31,29 +45,15 @@ func test(num uint) bool {
 
 func main() {
 
-	setup()
-
 	var i uint
 
-	for i = 11; i <= 10000; i += 2 {
+	for i = 21; i <= 1000; i += 2 {
 		if test(i) {
 			fmt.Println("Is prime: ", i)
-			primes[i] = true
+			primes = append(primes, i)
 		} else {
-			fmt.Println("\tNot prime: ", i)
+			// fmt.Println("\tNot prime: ", i)
 		}
 
 	}
-}
-
-func setup() {
-	primes = make(map[uint]bool)
-	primes[2] = true
-	primes[3] = true
-	primes[5] = true
-	primes[7] = true
-	primes[11] = true
-	primes[13] = true
-	primes[17] = true
-	primes[19] = true
 }
