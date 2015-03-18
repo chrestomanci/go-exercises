@@ -24,16 +24,12 @@ func test(num uint) bool {
 			continue // No need to test, caller will only send odd numbers.
 		}
 
-		if 0 == prime {
-			// ran out of entries in the slice
+		// No need to test with prime divisors larger than sqrt of num
+		if prime*prime > num {
 			return true
 		}
 
 		// fmt.Printf("\t\tTesting %d with %d\n", num, prime)
-
-		if num == prime {
-			return true
-		}
 
 		if 0 == num%prime {
 			return false
